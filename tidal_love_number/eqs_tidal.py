@@ -30,3 +30,17 @@ http://google.github.io/styleguide/pyguide.html
 def print_func( par ):
    print ("Hello : ", par)
    return
+
+def k_2_politrope(n, ratio_M_R):
+   
+	return (3./2.)*(-0.41 + (0.56/n**(0.33)))*ratio_M_R**(-0.003)
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
