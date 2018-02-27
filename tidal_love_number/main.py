@@ -1,31 +1,21 @@
+"""
+Main module.
+"""
 #!/usr/bin/python
 
-import tidal_calc
 
-import csv
-
+import eos
 
 def main():
-	
-	stellar_data = []
+    """ Main function. """
 
+    file_name = '../data/mit.bag.model.B_145.CGS.csv'
 
-	with open('../data/hinderer.csv', 'r') as csvfile:
-		#ratio_reader = csv.reader(csvfile, skipinitialspace=True, delimiter=',')
-		ratio_reader = csv.DictReader(csvfile, delimiter=',')
-		#for row in ratio_reader:
-		for line in ratio_reader:
-			stellar_data.append([
-				float(line['n'].strip()),
-				float(line['M_R'].strip()), 
-				float(line['k2'].strip())])
+    mit_eos = eos.EoS(
+        filename=file_name,
+        central_energy_density=1)
 
-	loveNumberCalc = tidal_calc.LoveNumberCalc(stellar_data)
-	
-	loveNumberCalc.print_love_numbers()
-	
-	
-	
-  
-if __name__== "__main__":
-	main()
+    print "Pressure({}) = {}".format(1, mit_eos.pressure_from_energy(1))
+
+if __name__ == "__main__":
+    main()
