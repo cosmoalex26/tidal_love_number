@@ -88,8 +88,8 @@ class EoSLoader(object):
             for row in reader:
                 if not row[0].startswith('#'):
                     eos_value = EoSValue(float(
-                        row[Columns.MASS_DENSITY])*const.LIGHT_SPEED**2./self.__central_energy_density,
-                        float(row[Columns.PRESSURE])/self.__central_energy_density,
+                        row[Columns.MASS_DENSITY])*const.LIGHT_SPEED**2.,
+                        float(row[Columns.PRESSURE]),
                         float(row[Columns.BARYONIC_NUMBER]))
 
                     self.__eos_list.append(eos_value)
