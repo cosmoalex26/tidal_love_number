@@ -26,7 +26,13 @@ def d_h_dr(radius, beta):
     """ d_h_dr """
     return beta
 
-def d_beta_dr(radius, beta):
+def f(epsilon, pressure):
+    return epsilon + pressure
+
+def d_beta_dr(radius, beta, mass_r, epsilon, pressure, h_r):
     """ d_beta_dr """
-    return beta
+    return 2. * (1 - 2 * (mass_r/radius)) ** (-1.) * h_r * \
+        ( -2. * math.pi * (5*epsilon + 9*pressure + f(epsilon, pressure)) + (3/radius**2.) + 2*(1 - 2 * mass_r / radius)**(-1) * \
+        ((mass_r/radius) + 4 * math.pi*radius*pressure)**2 ) + (2 * beta/radius) *(1 - 2 * mass_r / radius)**(-1) * \
+        (-1 + mass_r/radius + 2 * math.pi * radius**2 * (epsilon - pressure))
 
